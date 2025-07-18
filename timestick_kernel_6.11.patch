@@ -1,0 +1,150 @@
+diff --git a/TimeStick/DRV/ax_main.c b/TimeStick/DRV/ax_main.c
+index 1234567..abcdefg 100644
+--- a/TimeStick/DRV/ax_main.c
++++ b/TimeStick/DRV/ax_main.c
+@@ -2108,16 +2108,29 @@ static int ax_get_chip_feature(struct ax_device *axdev)
+ static int ax_get_mac_address(struct ax_device *axdev)
+ {
+ 	struct net_device *netdev = axdev->netdev;
++	u8 addr[ETH_ALEN];
+ 
+ 	if (ax_read_cmd(axdev, AX_ACCESS_MAC, AX_NODE_ID, ETH_ALEN,
+-			ETH_ALEN, netdev->dev_addr, 0) < 0) {
++			ETH_ALEN, addr, 0) < 0) {
+ 		dev_err(&axdev->intf->dev, "Failed to read MAC address");
+ 		return -ENODEV;
+ 	}
+ 
+-	if (ax_check_ether_addr(axdev))
+-		dev_warn(&axdev->intf->dev, "Found invalid MAC address value");
++	/* Check if MAC address is valid */
++	if (!is_valid_ether_addr(addr)) {
++		dev_warn(&axdev->intf->dev, "Found invalid MAC address, using random");
++		eth_hw_addr_random(netdev);
++		/* Get the random address for further processing */
++		memcpy(addr, netdev->dev_addr, ETH_ALEN);
++	} else {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,15,0)
++		eth_hw_addr_set(netdev, addr);
++#else
++		memcpy(netdev->dev_addr, addr, ETH_ALEN);
++#endif
++	}
+ 
+-	ax_get_mac_pass(axdev, netdev->dev_addr);
++	ax_get_mac_pass(axdev, addr);
+ 
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,11,0)
+ 	memcpy(netdev->perm_addr, netdev->dev_addr, ETH_ALEN);
++#endif
+ 
+ 	if (ax_write_cmd(axdev, AX_ACCESS_MAC, AX_NODE_ID, ETH_ALEN,
+-			ETH_ALEN, netdev->dev_addr) < 0) {
++			ETH_ALEN, addr) < 0) {
+ 		dev_err(&axdev->intf->dev, "Failed to write MAC address");
+ 		return -ENODEV;
+ 	}
+@@ -1050,7 +1063,11 @@ static int ax_set_mac_addr(struct net_device *net, void *p)
+ 	if (!is_valid_ether_addr(addr->sa_data))
+ 		return -EADDRNOTAVAIL;
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,15,0)
++	eth_hw_addr_set(net, addr->sa_data);
++#else
+ 	memcpy(net->dev_addr, addr->sa_data, ETH_ALEN);
++#endif
+ 
+ 	/* Set the MAC address */
+ 	ret = ax_write_cmd(axdev, AX_ACCESS_MAC, AX_NODE_ID, ETH_ALEN,
+@@ -1060,7 +1077,11 @@ static int ax_set_mac_addr(struct net_device *net, void *p)
+ 	return ret;
+ }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,2,0)
++static void ax_get_drvinfo(struct net_device *net, struct ethtool_drvinfo *info)
++#else
+ void ax_get_drvinfo(struct net_device *net, struct ethtool_drvinfo *info)
++#endif
+ {
+ 	struct ax_device *axdev = netdev_priv(net);
+ 
+diff --git a/TimeStick/DRV/ax_main.h b/TimeStick/DRV/ax_main.h
+index 1234567..abcdefg 100644
+--- a/TimeStick/DRV/ax_main.h
++++ b/TimeStick/DRV/ax_main.h
+@@ -34,6 +34,16 @@
+ #include <linux/time.h>
+ #include "ax_ioctl.h"
+ 
++/* Compatibility for newer kernels */
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,11,0)
++#include <linux/etherdevice.h>
++#endif
++
++/* For older kernels define eth_hw_addr_set stub */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5,15,0)
++static inline void eth_hw_addr_set(struct net_device *dev, const u8 *addr)
++{
++	memcpy(dev->dev_addr, addr, ETH_ALEN);
++}
++#endif
++
+ #define napi_alloc_skb(napi, length) netdev_alloc_skb_ip_align(netdev, length)
+ #define napi_complete_done(n, d) napi_complete(n)
+ 
+diff --git a/TimeStick/DRV/Makefile b/TimeStick/DRV/Makefile
+index 1234567..abcdefg 100644
+--- a/TimeStick/DRV/Makefile
++++ b/TimeStick/DRV/Makefile
+@@ -1,6 +1,15 @@
+ TARGET	= ax_usb_nic
+ KDIR	:= /lib/modules/$(shell uname -r)/build
+ PWD	= $(shell pwd)
++
++# Kernel version detection
++KERNEL_VERSION := $(shell uname -r)
++KERNEL_MAJOR := $(shell echo $(KERNEL_VERSION) | cut -d. -f1)
++KERNEL_MINOR := $(shell echo $(KERNEL_VERSION) | cut -d. -f2)
++
++# For kernels 6.11 and above
++ifeq ($(shell [ $(KERNEL_MAJOR) -gt 6 -o \( $(KERNEL_MAJOR) -eq 6 -a $(KERNEL_MINOR) -ge 11 \) ] && echo 1),1)
++    EXTRA_CFLAGS += -DKERNEL_6_11_PLUS
++endif
+ 
+ ENABLE_IOCTL_DEBUG = n
+ ENABLE_AUTODETACH_FUNC = n
+diff --git a/TimeStick/DRV/ax88179_178a.c b/TimeStick/DRV/ax88179_178a.c
+index 1234567..abcdefg 100644
+--- a/TimeStick/DRV/ax88179_178a.c
++++ b/TimeStick/DRV/ax88179_178a.c
+@@ -434,7 +434,12 @@ static int ax88179_set_mac_addr(struct net_device *net, void *p)
+ 	if (!is_valid_ether_addr(addr->sa_data))
+ 		return -EADDRNOTAVAIL;
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,15,0)
++	eth_hw_addr_set(net, addr->sa_data);
++#else
+ 	memcpy(net->dev_addr, addr->sa_data, ETH_ALEN);
++#endif
++
+ 	memcpy(buf, addr->sa_data, ETH_ALEN);
+ 
+ 	ax_write_cmd(axdev, AX_ACCESS_MAC, AX_NODE_ID, ETH_ALEN,
+diff --git a/TimeStick/DRV/ax88179a_772d.c b/TimeStick/DRV/ax88179a_772d.c
+index 1234567..abcdefg 100644
+--- a/TimeStick/DRV/ax88179a_772d.c
++++ b/TimeStick/DRV/ax88179a_772d.c
+@@ -1150,7 +1150,12 @@ static int ax88179a_set_mac_addr(struct net_device *net, void *p)
+ 	if (!is_valid_ether_addr(addr->sa_data))
+ 		return -EADDRNOTAVAIL;
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,15,0)
++	eth_hw_addr_set(net, addr->sa_data);
++#else
+ 	memcpy(net->dev_addr, addr->sa_data, ETH_ALEN);
++#endif
++
+ 	memcpy(buf, addr->sa_data, ETH_ALEN);
+ 
+ 	ax_write_cmd(axdev, AX_ACCESS_MAC, AX_NODE_ID, ETH_ALEN,
