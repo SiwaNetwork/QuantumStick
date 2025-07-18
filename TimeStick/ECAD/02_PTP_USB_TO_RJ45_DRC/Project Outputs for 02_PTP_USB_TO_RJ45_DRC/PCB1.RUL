@@ -1,0 +1,6 @@
+DRC Rules Export File for PCB: C:\Users\SHIWA\Documents\GitHub\QUANTUM\Incubation\Hardware\TimeStick\ECAD\02_PTP_USB_TO_RJ45_DRC\PCB1.PcbDoc
+RuleKind=Width|RuleName=Width_PPS|Scope=Board|Minimum=10.87
+RuleKind=ShortCircuit|RuleName=ShortCircuit|Scope=Board|Allowed=0
+RuleKind=SolderMaskExpansion|RuleName=SolderMaskExpansion|Scope=Board|Minimum=1.50
+RuleKind=Width|RuleName=Width|Scope=Board|Minimum=3.54
+RuleKind=Clearance|RuleName=Clearance|Scope=Board|Minimum=3.54

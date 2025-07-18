@@ -1,0 +1,3 @@
+Layer Pairs Export File for PCB: C:\Documents\Altium\SM_Project\QUANTUM\Incubation\Hardware\TimeStick2\ECAD\TIMESTICK_2.PcbDoc
+LayersSetName=Top_Bot_Thru_Holes|DrillFile=timestick_2_rev.1.1_gbr 2025-02-25 10-51-roundholes.txt|DrillLayers=gtl,g1,g2,gbl
+LayersSetName=Top_Bot_Slot_Holes|DrillFile=timestick_2_rev.1.1_gbr 2025-02-25 10-51-slotholes.txt|DrillLayers=gtl,g1,g2,gbl

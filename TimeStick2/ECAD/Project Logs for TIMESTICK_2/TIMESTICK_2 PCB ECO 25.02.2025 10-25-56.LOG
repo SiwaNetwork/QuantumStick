@@ -1,0 +1,50 @@
+Added Member To Class: ClassName=MAIN Member=Component C5 0.1 µF
+Added Member To Class: ClassName=MAIN Member=Component C7 0.1 µF
+Added Member To Class: ClassName=MAIN Member=Component C11 0.1 µF
+Added Member To Class: ClassName=MAIN Member=Component C12 47 pF
+Added Member To Class: ClassName=MAIN Member=Component C13 15 pF
+Added Member To Class: ClassName=MAIN Member=Component C14 15 pF
+Added Member To Class: ClassName=MAIN Member=Component C15 1000 pF/2kV
+Added Member To Class: ClassName=MAIN Member=Component C17 0.1 µF
+Added Member To Class: ClassName=MAIN Member=Component C18 22 µF
+Added Member To Class: ClassName=MAIN Member=Component C24 0.1 µF
+Added Member To Class: ClassName=MAIN Member=Component C26 0.1 µF
+Added Member To Class: ClassName=MAIN Member=Component C28 0.1 µF
+Added Member To Class: ClassName=MAIN Member=Component C29 4.7 µF
+Added Member To Class: ClassName=MAIN Member=Component C30 0.1 µF
+Added Member To Class: ClassName=MAIN Member=Component C31 0.1 µF
+Added Member To Class: ClassName=MAIN Member=Component C33 0.1 µF
+Added Member To Class: ClassName=MAIN Member=Component C34 22 µF
+Added Member To Class: ClassName=MAIN Member=Component C35 4.7 µF
+Added Member To Class: ClassName=MAIN Member=Component C37 0.1 µF
+Added Member To Class: ClassName=MAIN Member=Component C38 0.1 µF
+Added Member To Class: ClassName=MAIN Member=Component C39 0.1 µF
+Added Member To Class: ClassName=MAIN Member=Component C43 0.1 µF
+Added Member To Class: ClassName=MAIN Member=Component FB2 80 Ohms @ 100 MHz
+Added Member To Class: ClassName=MAIN Member=Component FB4 80 Ohms @ 100 MHz
+Added Member To Class: ClassName=MAIN Member=Component FB5 80 Ohms @ 100 MHz
+Added Member To Class: ClassName=MAIN Member=Component J2 73100-0114
+Added Member To Class: ClassName=MAIN Member=Component J3 PBS-5
+Added Member To Class: ClassName=MAIN Member=Component R6 10 kOhms
+Added Member To Class: ClassName=MAIN Member=Component R8 4.7 kOhms
+Added Member To Class: ClassName=MAIN Member=Component R9 4.7 kOhms
+Added Member To Class: ClassName=MAIN Member=Component R11 0 Ohms
+Added Member To Class: ClassName=MAIN Member=Component R12 330 Ohms
+Added Member To Class: ClassName=MAIN Member=Component R14 49.9 kOhms
+Added Member To Class: ClassName=MAIN Member=Component R15 DNP
+Added Member To Class: ClassName=MAIN Member=Component R16 10 kOhms
+Added Member To Class: ClassName=MAIN Member=Component R17 100 kOhms
+Added Member To Class: ClassName=MAIN Member=Component R18 4.7 kOhms
+Added Member To Class: ClassName=MAIN Member=Component R19 4.7 kOhms
+Added Member To Class: ClassName=MAIN Member=Component R23 0 Ohms
+Added Member To Class: ClassName=MAIN Member=Component R24 47 kOhms
+Added Member To Class: ClassName=MAIN Member=Component R27 0 Ohms
+Added Member To Class: ClassName=MAIN Member=Component R28 200 Ohms
+Added Member To Class: ClassName=MAIN Member=Component R29 5.1 kOhms
+Added Member To Class: ClassName=MAIN Member=Component R30 1 MOhms
+Added Member To Class: ClassName=MAIN Member=Component R31 5.1 kOhms
+Added Member To Class: ClassName=MAIN Member=Component R33 4.7 kOhms
+Added Member To Class: ClassName=MAIN Member=Component U5 SN74LVC1G3157DBVR
+Added Member To Class: ClassName=MAIN Member=Component U6 SN74LVC1G3157DBVR
+Added Member To Class: ClassName=MAIN Member=Component U7 AX88279
+Added Member To Class: ClassName=MAIN Member=Component U8 ESD7016MUTAG

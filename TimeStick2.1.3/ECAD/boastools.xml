@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BoasToolsConfig>
+  <ViewModels>
+    <BalanceViewModel>
+      <param name="Filltype" value="Rhombus" />
+      <param name="Copbalwidth" value="1,500mm" />
+      <param name="Copbaldistance" value="1,500mm" />
+      <param name="Copbalcrop" value="false" />
+      <param name="Unit" value="mm" />
+    </BalanceViewModel>
+    <IBomViewModel>
+      <param name="Title" value="TIMESTICK_2.1-release" />
+      <param name="Company" value="YA" />
+      <param name="Revision" value="Rev: v1" />
+      <param name="DarkMode" value="false" />
+      <param name="FabLayer" value="false" />
+      <param name="Nets" value="true" />
+      <param name="SelectByClick" value="true" />
+      <param name="HighlightFirstPin" value="false" />
+      <param name="AddFirstPin" value="true" />
+      <param name="ShowTexts" value="true" />
+      <param name="GroupDes" value="false" />
+      <param name="ShowValue" value="true" />
+      <param name="Selectedvalue" value="Value" />
+      <param name="ParameterCheckboxes" value="System.ComponentModel.BindingList`1[BoasTools.Helpers.CheckboxData]">
+        <checkbox parameter="[Comment]" checked="False" visible="False" />
+        <checkbox parameter="[Description]" checked="False" visible="False" />
+        <checkbox parameter="[DesignItemID]" checked="False" visible="False" />
+        <checkbox parameter="[Footprint]" checked="True" visible="True" />
+        <checkbox parameter="Access Time" checked="False" visible="False" />
+        <checkbox parameter="Accuracy" checked="False" visible="False" />
+        <checkbox parameter="Actuator Level" checked="False" visible="False" />
+        <checkbox parameter="Actuator Type" checked="False" visible="False" />
+        <checkbox parameter="Address Bus Width" checked="False" visible="False" />
+        <checkbox parameter="Applications" checked="False" visible="False" />
+        <checkbox parameter="Arrow Part Number" checked="False" visible="False" />
+        <checkbox parameter="Arrow Price/Stock" checked="False" visible="False" />
+        <checkbox parameter="C Max (pF)" checked="False" visible="False" />
+        <checkbox parameter="Capacitance" checked="False" visible="False" />
+        <checkbox parameter="Case" checked="False" visible="False" />
+        <checkbox parameter="Case Code (Imperial)" checked="False" visible="False" />
+        <checkbox parameter="Case Code (Metric)" checked="False" visible="False" />
+        <checkbox parameter="Case/Package" checked="False" visible="False" />
+        <checkbox parameter="CatalogueCode" checked="False" visible="False" />
+        <checkbox parameter="Category" checked="False" visible="False" />
+        <checkbox parameter="Circuit" checked="False" visible="False" />
+        <checkbox parameter="Color" checked="False" visible="False" />
+        <checkbox parameter="componentlink1description" checked="False" visible="False" />
+        <checkbox parameter="componentlink1url" checked="False" visible="False" />
+        <checkbox parameter="componentlink2description" checked="False" visible="False" />
+        <checkbox parameter="componentlink2url" checked="False" visible="False" />
+        <checkbox parameter="ComponentLink3Description" checked="False" visible="False" />
+        <checkbox parameter="ComponentLink3URL" checked="False" visible="False" />
+        <checkbox parameter="ComponentLink4Description" checked="False" visible="False" />
+        <checkbox parameter="ComponentLink4URL" checked="False" visible="False" />
+        <checkbox parameter="ComponentLink5Description" checked="False" visible="False" />
+        <checkbox parameter="ComponentLink5URL" checked="False" visible="False" />
+        <checkbox parameter="ComponentLink6Description" checked="False" visible="False" />
+        <checkbox parameter="ComponentLink6URL" checked="False" visible="False" />
+        <checkbox parameter="ComponentLink7Description" checked="False" visible="False" />
+        <checkbox parameter="ComponentLink7URL" checked="False" visible="False" />
+        <checkbox parameter="ComponentLink8Description" checked="False" visible="False" />
+        <checkbox parameter="ComponentLink8URL" checked="False" visible="False" />
+        <checkbox parameter="Composition" checked="False" visible="False" />
+        <checkbox parameter="Connector Type" checked="False" visible="False" />
+        <checkbox parameter="Contact Finish" checked="False" visible="False" />
+        <checkbox parameter="Contact Material" checked="False" visible="False" />
+        <checkbox parameter="Current Rating (Amps)" checked="False" visible="False" />
+        <checkbox parameter="Current Rating (Max)" checked="False" visible="False" />
+        <checkbox parameter="Data Bus Width" checked="False" visible="False" />
+        <checkbox parameter="Datasheet Link" checked="False" visible="False" />
+        <checkbox parameter="DatasheetVersion" checked="False" visible="False" />
+        <checkbox parameter="DC Resistance (DCR)" checked="False" visible="False" />
+        <checkbox parameter="DC Resistance (DCR) (Max)" checked="False" visible="False" />
+        <checkbox parameter="Density" checked="False" visible="False" />
+        <checkbox parameter="Device Package" checked="False" visible="False" />
+        <checkbox parameter="Direction" checked="False" visible="False" />
+        <checkbox parameter="Dominant Wavelength" checked="False" visible="False" />
+        <checkbox parameter="Efficiency" checked="False" visible="False" />
+        <checkbox parameter="ESR (Equivalent Series Resistance)" checked="False" visible="False" />
+        <checkbox parameter="Features" checked="False" visible="False" />
+        <checkbox parameter="Filter Type" checked="False" visible="False" />
+        <checkbox parameter="Forward Current" checked="False" visible="False" />
+        <checkbox parameter="Forward Voltage" checked="False" visible="False" />
+        <checkbox parameter="Frequency" checked="False" visible="False" />
+        <checkbox parameter="Frequency - Self Resonant" checked="False" visible="False" />
+        <checkbox parameter="Frequency Stability" checked="False" visible="False" />
+        <checkbox parameter="Frequency Tolerance" checked="False" visible="False" />
+        <checkbox parameter="Gender" checked="False" visible="False" />
+        <checkbox parameter="Height" checked="False" visible="False" />
+        <checkbox parameter="Height - Seated (Max)" checked="False" visible="False" />
+        <checkbox parameter="Height (Max)" checked="False" visible="False" />
+        <checkbox parameter="Height Above Board" checked="False" visible="False" />
+        <checkbox parameter="Illumination Color" checked="False" visible="False" />
+        <checkbox parameter="Impedance @ Frequency" checked="False" visible="False" />
+        <checkbox parameter="Inductance" checked="False" visible="False" />
+        <checkbox parameter="Inductance Frequency - Test" checked="False" visible="False" />
+        <checkbox parameter="Interface" checked="False" visible="False" />
+        <checkbox parameter="IR Max (uA)" checked="False" visible="False" />
+        <checkbox parameter="lastupdated" checked="False" visible="False" />
+        <checkbox parameter="Lead Free" checked="False" visible="False" />
+        <checkbox parameter="Length" checked="False" visible="False" />
+        <checkbox parameter="Lens Color" checked="False" visible="False" />
+        <checkbox parameter="Lens Transparency" checked="False" visible="False" />
+        <checkbox parameter="Lifecycle Status" checked="False" visible="False" />
+        <checkbox parameter="Load Capacitance" checked="False" visible="False" />
+        <checkbox parameter="Luminous Intensity" checked="False" visible="False" />
+        <checkbox parameter="Manufacturer" checked="False" visible="False" />
+        <checkbox parameter="Manufacturer Part Number" checked="False" visible="False" />
+        <checkbox parameter="Manufacturer_Name" checked="False" visible="False" />
+        <checkbox parameter="Manufacturer_Part_Number" checked="False" visible="False" />
+        <checkbox parameter="Material - Core" checked="False" visible="False" />
+        <checkbox parameter="Mating Cycles" checked="False" visible="False" />
+        <checkbox parameter="Max Frequency" checked="False" visible="False" />
+        <checkbox parameter="Max Operating Temperature" checked="False" visible="False" />
+        <checkbox parameter="Max Output current" checked="False" visible="False" />
+        <checkbox parameter="Max Supply Voltage" checked="False" visible="False" />
+        <checkbox parameter="Memory Size" checked="False" visible="False" />
+        <checkbox parameter="Memory Type" checked="False" visible="False" />
+        <checkbox parameter="Min Input Voltage" checked="False" visible="False" />
+        <checkbox parameter="Min Operating Temperature" checked="False" visible="False" />
+        <checkbox parameter="Min Supply Voltage" checked="False" visible="False" />
+        <checkbox parameter="Minimum Order" checked="False" visible="False" />
+        <checkbox parameter="Mount" checked="False" visible="False" />
+        <checkbox parameter="Mounting Feature" checked="False" visible="False" />
+        <checkbox parameter="Mounting Technology" checked="False" visible="False" />
+        <checkbox parameter="Mounting Type" checked="False" visible="False" />
+        <checkbox parameter="Mouser Part Number" checked="False" visible="False" />
+        <checkbox parameter="Mouser Price/Stock" checked="False" visible="False" />
+        <checkbox parameter="NexarPartId" checked="False" visible="False" />
+        <checkbox parameter="Nominal Supply Current" checked="False" visible="False" />
+        <checkbox parameter="Number of Contacts" checked="False" visible="False" />
+        <checkbox parameter="Number of Lines" checked="False" visible="False" />
+        <checkbox parameter="Number of Outputs" checked="False" visible="False" />
+        <checkbox parameter="Number of Pins" checked="False" visible="False" />
+        <checkbox parameter="Number of Ports" checked="False" visible="False" />
+        <checkbox parameter="Number of Positions" checked="False" visible="False" />
+        <checkbox parameter="Number of Terminations" checked="False" visible="False" />
+        <checkbox parameter="Operating Mode" checked="False" visible="False" />
+        <checkbox parameter="Operating Supply Voltage" checked="False" visible="False" />
+        <checkbox parameter="Operating Temperature" checked="False" visible="False" />
+        <checkbox parameter="Output Current" checked="False" visible="False" />
+        <checkbox parameter="Output Type" checked="False" visible="False" />
+        <checkbox parameter="Output Voltage" checked="False" visible="False" />
+        <checkbox parameter="Package / Case" checked="False" visible="False" />
+        <checkbox parameter="Package Quantity" checked="False" visible="False" />
+        <checkbox parameter="PackageDescription" checked="False" visible="False" />
+        <checkbox parameter="PackageReference" checked="False" visible="False" />
+        <checkbox parameter="PackageVersion" checked="False" visible="False" />
+        <checkbox parameter="packaging" checked="False" visible="False" />
+        <checkbox parameter="Packing" checked="False" visible="False" />
+        <checkbox parameter="Part Number" checked="False" visible="False" />
+        <checkbox parameter="Part Number1" checked="False" visible="False" />
+        <checkbox parameter="Part Status" checked="False" visible="False" />
+        <checkbox parameter="partid" checked="False" visible="False" />
+        <checkbox parameter="PartNumber" checked="False" visible="False" />
+        <checkbox parameter="Pins" checked="False" visible="False" />
+        <checkbox parameter="Pitch" checked="False" visible="False" />
+        <checkbox parameter="Polarity" checked="False" visible="False" />
+        <checkbox parameter="Power (Watts)" checked="False" visible="False" />
+        <checkbox parameter="PowerVoltage" checked="False" visible="False" />
+        <checkbox parameter="Price" checked="False" visible="False" />
+        <checkbox parameter="Pricing" checked="False" visible="False" />
+        <checkbox parameter="Quiescent Current" checked="False" visible="False" />
+        <checkbox parameter="Radiation Hardening" checked="False" visible="False" />
+        <checkbox parameter="Reseller1" checked="False" visible="False" />
+        <checkbox parameter="Reseller2" checked="False" visible="False" />
+        <checkbox parameter="Reseller3" checked="False" visible="False" />
+        <checkbox parameter="Resistance" checked="False" visible="False" />
+        <checkbox parameter="RoHS" checked="False" visible="False" />
+        <checkbox parameter="RoHS Compliant" checked="False" visible="False" />
+        <checkbox parameter="Schedule B" checked="False" visible="False" />
+        <checkbox parameter="series" checked="False" visible="False" />
+        <checkbox parameter="Shielding" checked="False" visible="False" />
+        <checkbox parameter="Size / Dimension" checked="False" visible="False" />
+        <checkbox parameter="Specifications" checked="False" visible="False" />
+        <checkbox parameter="Stock" checked="False" visible="False" />
+        <checkbox parameter="Supplier" checked="False" visible="False" />
+        <checkbox parameter="Supplier 1" checked="False" visible="False" />
+        <checkbox parameter="Supplier Device Package" checked="False" visible="False" />
+        <checkbox parameter="Supplier Part Number" checked="False" visible="False" />
+        <checkbox parameter="Supplier Part Number 1" checked="False" visible="False" />
+        <checkbox parameter="Switching Frequency" checked="False" visible="False" />
+        <checkbox parameter="Sync/Async" checked="False" visible="False" />
+        <checkbox parameter="Synchronous Rectifier" checked="False" visible="False" />
+        <checkbox parameter="System" checked="False" visible="False" />
+        <checkbox parameter="Tempcoeff" checked="False" visible="False" />
+        <checkbox parameter="Temperature Coefficient" checked="False" visible="False" />
+        <checkbox parameter="Termination" checked="False" visible="False" />
+        <checkbox parameter="Termination Style" checked="False" visible="False" />
+        <checkbox parameter="Test Current" checked="False" visible="False" />
+        <checkbox parameter="Thickness (Max)" checked="False" visible="False" />
+        <checkbox parameter="Tolerance" checked="False" visible="False" />
+        <checkbox parameter="Type" checked="False" visible="False" />
+        <checkbox parameter="V(BR) Min (V)" checked="False" visible="False" />
+        <checkbox parameter="Viewing Angle" checked="False" visible="False" />
+        <checkbox parameter="Voltage - Rated" checked="False" visible="False" />
+        <checkbox parameter="Voltage Rating" checked="False" visible="False" />
+        <checkbox parameter="VRWM Max (V)" checked="False" visible="False" />
+        <checkbox parameter="Washable" checked="False" visible="False" />
+        <checkbox parameter="Weight" checked="False" visible="False" />
+        <checkbox parameter="Width" checked="False" visible="False" />
+        <checkbox parameter="Word Size" checked="False" visible="False" />
+      </param>
+      <param name="CustomFabrication" value="false" />
+      <param name="FabricationColor" value="#FFBF5BBF" />
+      <param name="CustomSilkscreen" value="false" />
+      <param name="SilkscreenColor" value="#FFAAAA44" />
+      <param name="CustomNet" value="false" />
+      <param name="NetColor" value="#FFDEF5F1" />
+      <param name="CustomHighlight" value="false" />
+      <param name="HightlightColor" value="#FF00FF00" />
+      <param name="CustompadHighlight" value="false" />
+      <param name="PadHightlightColor" value="#FF00FF00" />
+      <param name="CustompinHighlight" value="false" />
+      <param name="PinHightlightColor" value="#FFFFB629" />
+      <param name="LayerView" value="FB" />
+      <param name="AddToProject" value="true" />
+      <param name="ID_Components" value="System.Collections.Generic.Dictionary`2[System.String,PCB.IPCB_Component]" />
+      <param name="IBomExpanded" value="false" />
+      <param name="ShowFootprint" value="false" />
+    </IBomViewModel>
+    <TrimViewModel>
+      <param name="TrimExpansion" value="0,150mm" />
+      <param name="TrimNeck" value="false" />
+      <param name="NeckWidth" value="0,200mm" />
+      <param name="TrimHoleSize" value="true" />
+      <param name="MinHoleSize" value="0,200mm" />
+      <param name="Unit" value="mm" />
+    </TrimViewModel>
+    <QtViewModel>
+      <param name="CodeType" value="QR" />
+      <param name="Size" value="10,000mm" />
+      <param name="Layer" value="TopOverlay" />
+      <param name="Invert" value="true" />
+      <param name="Unit" value="mm" />
+    </QtViewModel>
+    <PuncherViewModel>
+      <param name="Unit" value="mm" />
+      <param name="Punchdistance" value="1,500mm" />
+      <param name="Punchoffset" value="1,500mm" />
+    </PuncherViewModel>
+    <PreviewViewModel>
+      <param name="Parent" value="BoasTools.ViewModel.PanelViewModel" />
+      <param name="Picture_Transparency" value="50%" />
+      <param name="Picture_Width" value="100,000mm" />
+      <param name="Picture_Height" value="0,000mm" />
+      <param name="Unit" value="mm" />
+      <param name="Picture_DPI" value="1" />
+    </PreviewViewModel>
+  </ViewModels>
+  <Parameters>
+    <param name="Unitstxt" value="MMs" />
+    <param name="IBomExpanded" value="true" />
+    <param name="TrimExpanded" value="false" />
+    <param name="BalanceExpanded" value="false" />
+    <param name="QrExpanded" value="false" />
+    <param name="PreviewExpanded" value="false" />
+    <param name="PuncherExpanded" value="false" />
+    <param name="Visible" value="false" />
+  </Parameters>
+</BoasToolsConfig>

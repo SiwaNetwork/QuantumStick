@@ -1,0 +1,328 @@
+Protel Design System Design Rule Check
+PCB File : C:\Documents\Altium\SM_Project\QUANTUM\Time Stick าลอุ.467883.004\TimeStick2.1\ECAD\TIMESTICK_2.1.PcbDoc
+Date     : 30.04.2025
+Time     : 12:04:11
+
+Processing Rule : Clearance Constraint (Gap=0.15mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.125mm) (Disabled)(All),(All)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.1mm) (Disabled)(All),(All)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.2mm) (Disabled)(All),(All)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.35mm) (Disabled)(All),(All)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.3mm) (Disabled)(All),(All)
+Rule Violations :0
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+Rule Violations :0
+
+Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.2mm) (Max=1mm) (Preferred=0.3mm) (All)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.1mm) (Max=10mm) (Preferred=0.125mm) (Disabled)(All)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.205mm) (Max=10mm) (Preferred=0.286mm) (InNetClass('PPS_50'))
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.35mm) (Max=10mm) (Preferred=0.4mm) (Disabled)(All)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.3mm) (Max=10mm) (Preferred=0.35mm) (Disabled)(All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=0.2mm) (Conductor Width=0.35mm) (Air Gap=0.35mm) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=0.2mm) (Conductor Width=0.2mm) (Air Gap=0.2mm) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=0.15mm) (Conductor Width=0.15mm) (Air Gap=0.15mm) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=0.15mm) (Conductor Width=0.2mm) (Air Gap=0.2mm) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=0.2mm) (Conductor Width=0.3mm) (Air Gap=0.3mm) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=0.2mm) (Conductor Width=0.2mm) (Air Gap=0.2mm) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Minimum Annular Ring (Minimum=0.2mm) (Disabled)(IsPAD)
+Rule Violations :0
+
+Processing Rule : Minimum Annular Ring (Minimum=0.1mm) (IsVia)
+Rule Violations :0
+
+Processing Rule : Minimum Annular Ring (Minimum=0.15mm) (Disabled)(IsVia)
+Rule Violations :0
+
+Processing Rule : Minimum Annular Ring (Minimum=0.15mm) (IsPAD)
+Rule Violations :0
+
+Processing Rule : Acute Angle Constraint (Minimum=35.000) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=0.6mm) (Max=5.9mm) (IsPad)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=0.3mm) (Max=5.9mm) (Disabled)(IsVia)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=0.2mm) (Max=5.9mm) (IsVia)
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=0.25mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=0.1mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=0.15mm) (Disabled)(All),(All)
+Rule Violations :0
+
+Processing Rule : Silk To Solder Mask (Clearance=0.15mm) (Disabled)(IsPad),(All)
+Rule Violations :0
+
+Processing Rule : Silk to Silk (Clearance=0.15mm) (Disabled)(All),(All)
+Rule Violations :0
+
+Processing Rule : Net Antennae (Tolerance=0mm) (All)
+Rule Violations :0
+
+Processing Rule : Board Clearance Constraint (Gap=0mm) (All)
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Arc (39.51mm,62.771mm) on Top Overlay And Board Edge 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Arc (39.51mm,67.498mm) on Top Overlay And Board Edge 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Text "U8" (108.992mm,73.843mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (35.26mm,57.185mm)(35.26mm,73.085mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (35.26mm,57.185mm)(47.26mm,57.185mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (35.26mm,73.085mm)(47.26mm,73.085mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (35.76mm,57.185mm)(37.26mm,56.635mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (35.76mm,73.085mm)(37.26mm,73.635mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (37.03mm,49.8mm)(37.03mm,51.2mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (37.03mm,49.8mm)(38.23mm,49.8mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (37.03mm,51.2mm)(38.23mm,51.2mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (37.03mm,52.34mm)(37.03mm,53.74mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (37.03mm,52.34mm)(38.23mm,52.34mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (37.03mm,53.74mm)(38.23mm,53.74mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (38.23mm,48.47mm)(38.23mm,55.07mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (38.23mm,48.47mm)(43.73mm,48.47mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (38.23mm,55.07mm)(43.73mm,55.07mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (59.325mm,39.93mm)(59.325mm,40.83mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (59.325mm,39.93mm)(65.675mm,39.93mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (59.96mm,29.93mm)(60.5mm,29.43mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (59.96mm,29.93mm)(60mm,39.93mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (60.5mm,28.53mm)(60.5mm,29.43mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (60.5mm,28.53mm)(64.5mm,28.53mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (60.5mm,29.43mm)(64.5mm,29.43mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (64.5mm,28.53mm)(64.5mm,29.43mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (64.5mm,29.43mm)(65mm,29.93mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (65.675mm,39.93mm)(65.675mm,40.83mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (65mm,29.93mm)(65mm,39.93mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (70.325mm,39.93mm)(70.325mm,40.83mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (70.325mm,39.93mm)(76.675mm,39.93mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (70.96mm,29.93mm)(71.5mm,29.43mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (70.96mm,29.93mm)(71mm,39.93mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (71.5mm,28.53mm)(71.5mm,29.43mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (71.5mm,28.53mm)(75.5mm,28.53mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (71.5mm,29.43mm)(75.5mm,29.43mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (75.5mm,28.53mm)(75.5mm,29.43mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (75.5mm,29.43mm)(76mm,29.93mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (76.675mm,39.93mm)(76.675mm,40.83mm) on Top Overlay 
+   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (76mm,29.93mm)(76mm,39.93mm) on Top Overlay 
+Rule Violations :39
+
+Processing Rule : Board Clearance Constraint (Gap=0mm) (All)
+Rule Violations :0
+
+Processing Rule : Matched Lengths(Tolerance=0.127mm) (InxSignalClass('USB_CHJ5_1_DL') OR InxSignalClass('USB_CHJ5_1_RX') OR InxSignalClass('USB_CHJ5_1_TX'))
+Rule Violations :0
+
+Processing Rule : Matched Lengths(Tolerance=0.127mm) (InxSignalClass('USB_CHJ5_1_DL_1') OR InxSignalClass('USB_CHJ5_1_RX_1') OR InxSignalClass('USB_CHJ5_1_TX_1'))
+Rule Violations :0
+
+Processing Rule : Matched Lengths(Tolerance=0.127mm) (InxSignalClass('USB_CHJ5_1_DL') OR InxSignalClass('USB_CHJ5_1_RX') OR InxSignalClass('USB_CHJ5_1_TX'))
+Rule Violations :0
+
+Processing Rule : Matched Lengths(Tolerance=25.4mm) (InDifferentialPair ('MDI0') Or InDifferentialPair ('MDI2') Or InDifferentialPair ('MDI1') Or InDifferentialPair ('MDI3'))
+Rule Violations :0
+
+Processing Rule : Matched Lengths(Tolerance=0.127mm) (InxSignalClass('USB_CHJ5_1_DL') OR InxSignalClass('USB_CHJ5_1_RX') OR InxSignalClass('USB_CHJ5_1_TX'))
+Rule Violations :0
+
+Processing Rule : Matched Lengths(Tolerance=25.4mm) (All)
+   Violation between Matched Net Lengths: Between Net +5V_ANT And Net GND Length:2.75mm is not within 25.4mm tolerance of Length:250.694mm (222.544mm short) 
+   Violation between Matched Net Lengths: Between Net 1PPS_IN_BUFF And Net GND Length:10.586mm is not within 25.4mm tolerance of Length:250.694mm (214.708mm short) 
+   Violation between Matched Net Lengths: Between Net 1PPS_IN_LED And Net GND Length:7.939mm is not within 25.4mm tolerance of Length:250.694mm (217.355mm short) 
+   Violation between Matched Net Lengths: Between Net 1PPS_IN And Net GND Length:14.614mm is not within 25.4mm tolerance of Length:250.694mm (210.68mm short) 
+   Violation between Matched Net Lengths: Between Net 1PPS_OUT_LED And Net GND Length:3.862mm is not within 25.4mm tolerance of Length:250.694mm (221.432mm short) 
+   Violation between Matched Net Lengths: Between Net 1PPS_OUT And Net GND Length:10.961mm is not within 25.4mm tolerance of Length:250.694mm (214.333mm short) 
+   Violation between Matched Net Lengths: Between Net 1PPS_SMA_OUT And Net GND Length:6.693mm is not within 25.4mm tolerance of Length:250.694mm (218.601mm short) 
+   Violation between Matched Net Lengths: Between Net 279_1PPS_IO And Net GND Length:36.209mm is not within 25.4mm tolerance of Length:250.694mm (189.085mm short) 
+   Violation between Matched Net Lengths: Between Net 279_TOD_IN_R And Net GND Length:5.97mm is not within 25.4mm tolerance of Length:250.694mm (219.324mm short) 
+   Violation between Matched Net Lengths: Between Net 279_TOD_IN And Net GND Length:30.458mm is not within 25.4mm tolerance of Length:250.694mm (194.837mm short) 
+   Violation between Matched Net Lengths: Between Net 279_TOD_OUT_R And Net GND Length:6.185mm is not within 25.4mm tolerance of Length:250.694mm (219.109mm short) 
+   Violation between Matched Net Lengths: Between Net 279_TOD_OUT And Net GND Length:38.805mm is not within 25.4mm tolerance of Length:250.694mm (186.489mm short) 
+   Violation between Matched Net Lengths: Between Net ANT And Net GND Length:13.56mm is not within 25.4mm tolerance of Length:250.694mm (211.734mm short) 
+   Violation between Matched Net Lengths: Between Net AVDD_1.85 And Net GND Length:43.035mm is not within 25.4mm tolerance of Length:250.694mm (182.259mm short) 
+   Violation between Matched Net Lengths: Between Net AVDD_33 And Net GND Length:48.657mm is not within 25.4mm tolerance of Length:250.694mm (176.637mm short) 
+   Violation between Matched Net Lengths: Between Net AVDD10 And Net GND Length:9.814mm is not within 25.4mm tolerance of Length:250.694mm (215.48mm short) 
+   Violation between Matched Net Lengths: Between Net CHASSIS_GND And Net GND Length:0mm is not within 25.4mm tolerance of Length:250.694mm (225.294mm short) 
+   Violation between Matched Net Lengths: Between Net D_N And Net GND Length:55.202mm is not within 25.4mm tolerance of Length:250.694mm (170.092mm short) 
+   Violation between Matched Net Lengths: Between Net D_P And Net GND Length:56.997mm is not within 25.4mm tolerance of Length:250.694mm (168.297mm short) 
+   Violation between Matched Net Lengths: Between Net DVDD_1.85 And Net GND Length:20.236mm is not within 25.4mm tolerance of Length:250.694mm (205.058mm short) 
+   Violation between Matched Net Lengths: Between Net DVDD_33 And Net GND Length:100.027mm is not within 25.4mm tolerance of Length:250.694mm (125.267mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net GPS_PPS_OUT Length:34.641mm is not within 25.4mm tolerance of Length:250.694mm (190.653mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net LED0 Length:77.922mm is not within 25.4mm tolerance of Length:250.694mm (147.372mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net LED1 Length:65.276mm is not within 25.4mm tolerance of Length:250.694mm (160.018mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net LNA_EN Length:27.629mm is not within 25.4mm tolerance of Length:250.694mm (197.665mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net MDI0_N Length:22.82mm is not within 25.4mm tolerance of Length:250.694mm (202.474mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net MDI0_P Length:22.389mm is not within 25.4mm tolerance of Length:250.694mm (202.905mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net MDI1_N Length:22.981mm is not within 25.4mm tolerance of Length:250.694mm (202.313mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net MDI1_P Length:22.617mm is not within 25.4mm tolerance of Length:250.694mm (202.677mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net MDI2_N Length:22.893mm is not within 25.4mm tolerance of Length:250.694mm (202.401mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net MDI2_P Length:22.452mm is not within 25.4mm tolerance of Length:250.694mm (202.842mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net MDI3_N Length:23.293mm is not within 25.4mm tolerance of Length:250.694mm (202.001mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net MDI3_P Length:22.712mm is not within 25.4mm tolerance of Length:250.694mm (202.582mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net MUX1_CTRL Length:26.988mm is not within 25.4mm tolerance of Length:250.694mm (198.306mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net MUX2_CTRL Length:32.459mm is not within 25.4mm tolerance of Length:250.694mm (192.835mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net NetC13_2 Length:6.211mm is not within 25.4mm tolerance of Length:250.694mm (219.083mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net NetC14_2 Length:7.036mm is not within 25.4mm tolerance of Length:250.694mm (218.258mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net NetC15_2 Length:50.023mm is not within 25.4mm tolerance of Length:250.694mm (175.271mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net NetC28_2 Length:6.257mm is not within 25.4mm tolerance of Length:250.694mm (219.037mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net NetC5_2 Length:2.635mm is not within 25.4mm tolerance of Length:250.694mm (222.659mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net NetD1_A Length:2.13mm is not within 25.4mm tolerance of Length:250.694mm (223.164mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net NetD2_A Length:2.919mm is not within 25.4mm tolerance of Length:250.694mm (222.375mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net NetJ2_1 Length:5.804mm is not within 25.4mm tolerance of Length:250.694mm (219.49mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net NetJ4_11 Length:38.744mm is not within 25.4mm tolerance of Length:250.694mm (186.55mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net NetJ4_13 Length:24.493mm is not within 25.4mm tolerance of Length:250.694mm (200.801mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net NetJ6_A5 Length:1.5mm is not within 25.4mm tolerance of Length:250.694mm (223.794mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net NetJ6_B5 Length:8.977mm is not within 25.4mm tolerance of Length:250.694mm (216.317mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net NetL2_1 Length:0mm is not within 25.4mm tolerance of Length:250.694mm (225.294mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net NetL3_1 Length:0mm is not within 25.4mm tolerance of Length:250.694mm (225.294mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net NetQ1_1 Length:4.8mm is not within 25.4mm tolerance of Length:250.694mm (220.494mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net NetQ1_2 Length:1.512mm is not within 25.4mm tolerance of Length:250.694mm (223.782mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net NetR1_1 Length:4.969mm is not within 25.4mm tolerance of Length:250.694mm (220.325mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net NetR21_2 Length:6.368mm is not within 25.4mm tolerance of Length:250.694mm (218.926mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net NetR22_1 Length:8.189mm is not within 25.4mm tolerance of Length:250.694mm (217.105mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net NetR24_1 Length:6.926mm is not within 25.4mm tolerance of Length:250.694mm (218.368mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net NetR25_1 Length:3.295mm is not within 25.4mm tolerance of Length:250.694mm (221.999mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net NetR37_2 Length:1.903mm is not within 25.4mm tolerance of Length:250.694mm (223.391mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net NetR38_2 Length:1.094mm is not within 25.4mm tolerance of Length:250.694mm (224.2mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net NetR39_1 Length:16.554mm is not within 25.4mm tolerance of Length:250.694mm (208.74mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net NetR4_2 Length:5.133mm is not within 25.4mm tolerance of Length:250.694mm (220.161mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net NetR40_2 Length:5.265mm is not within 25.4mm tolerance of Length:250.694mm (220.029mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net RESET_N Length:7.202mm is not within 25.4mm tolerance of Length:250.694mm (218.092mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net RF Length:10.4mm is not within 25.4mm tolerance of Length:250.694mm (214.894mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net SPI_CLK Length:18.827mm is not within 25.4mm tolerance of Length:250.694mm (206.467mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net SPI_CS Length:31.739mm is not within 25.4mm tolerance of Length:250.694mm (193.555mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net SPI_DIO Length:20.074mm is not within 25.4mm tolerance of Length:250.694mm (205.22mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net SSRX_N Length:57.008mm is not within 25.4mm tolerance of Length:250.694mm (168.286mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net SSRX_P Length:56.997mm is not within 25.4mm tolerance of Length:250.694mm (168.297mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net SSTX_N Length:35.217mm is not within 25.4mm tolerance of Length:250.694mm (190.077mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net SSTX_P Length:34.108mm is not within 25.4mm tolerance of Length:250.694mm (191.186mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net USB3.0_SSTX_N Length:25.26mm is not within 25.4mm tolerance of Length:250.694mm (200.034mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net USB3.0_SSTX_P Length:26.43mm is not within 25.4mm tolerance of Length:250.694mm (198.864mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net VBUS Length:7.371mm is not within 25.4mm tolerance of Length:250.694mm (217.923mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net VBUS_+5V Length:66.034mm is not within 25.4mm tolerance of Length:250.694mm (159.26mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net VCCK10 Length:28.347mm is not within 25.4mm tolerance of Length:250.694mm (196.947mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net VCORE_LDO Length:18.396mm is not within 25.4mm tolerance of Length:250.694mm (206.898mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net VDD_NEO Length:45.257mm is not within 25.4mm tolerance of Length:250.694mm (180.037mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net XTL20N Length:2.886mm is not within 25.4mm tolerance of Length:250.694mm (222.408mm short) 
+   Violation between Matched Net Lengths: Between Net GND And Net XTL20P Length:2.616mm is not within 25.4mm tolerance of Length:250.694mm (222.678mm short) 
+Rule Violations :79
+
+Processing Rule : Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)
+Rule Violations :0
+
+Waived Violations Of Rule : Minimum Solder Mask Sliver (Gap=0.1mm) (All),(All)
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.027mm < 0.1mm) Between Pad D3-1(105.492mm,60.856mm) on Top Layer And Pad D3-3(106.508mm,60.5mm) on Top Layer [Top Solder] Mask Sliver [0.027mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.027mm < 0.1mm) Between Pad D3-2(105.492mm,60.144mm) on Top Layer And Pad D3-3(106.508mm,60.5mm) on Top Layer [Top Solder] Mask Sliver [0.027mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.027mm < 0.1mm) Between Pad D4-1(105.492mm,58.856mm) on Top Layer And Pad D4-3(106.508mm,58.5mm) on Top Layer [Top Solder] Mask Sliver [0.027mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.027mm < 0.1mm) Between Pad D4-2(105.492mm,58.144mm) on Top Layer And Pad D4-3(106.508mm,58.5mm) on Top Layer [Top Solder] Mask Sliver [0.027mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.027mm < 0.1mm) Between Pad D5-1(105.492mm,62.856mm) on Top Layer And Pad D5-3(106.508mm,62.5mm) on Top Layer [Top Solder] Mask Sliver [0.027mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.027mm < 0.1mm) Between Pad D5-2(105.492mm,62.144mm) on Top Layer And Pad D5-3(106.508mm,62.5mm) on Top Layer [Top Solder] Mask Sliver [0.027mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.07mm < 0.1mm) Between Pad J6-B1(116.01mm,64.1mm) on Top Layer And Pad J6-S(115.11mm,65.32mm) on Multi-Layer [Top Solder] Mask Sliver [0.07mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.07mm < 0.1mm) Between Pad J6-B12(116mm,57.9mm) on Top Layer And Pad J6-S(115.11mm,56.68mm) on Multi-Layer [Top Solder] Mask Sliver [0.07mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.083mm < 0.1mm) Between Pad U5-1(72.441mm,75.7mm) on Top Layer And Pad U5-60(73.191mm,76.45mm) on Top Layer [Top Solder] Mask Sliver [0.083mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.099997mm (3.9369mil) < 0.1mm (3.937mil)) Between Pad U5-10(72.441mm,72.1mm) on Top Layer And Pad U5-61(75.991mm,72.9mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.099997mm (3.9369mil) < 0.1mm (3.937mil)) Between Pad U5-11(72.441mm,71.7mm) on Top Layer And Pad U5-61(75.991mm,72.9mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.099997mm (3.9369mil) < 0.1mm (3.937mil)) Between Pad U5-12(72.441mm,71.3mm) on Top Layer And Pad U5-61(75.991mm,72.9mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.099997mm (3.9369mil) < 0.1mm (3.937mil)) Between Pad U5-13(72.441mm,70.9mm) on Top Layer And Pad U5-61(75.991mm,72.9mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.099997mm (3.9369mil) < 0.1mm (3.937mil)) Between Pad U5-14(72.441mm,70.5mm) on Top Layer And Pad U5-61(75.991mm,72.9mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.083mm < 0.1mm) Between Pad U5-15(72.441mm,70.1mm) on Top Layer And Pad U5-16(73.191mm,69.35mm) on Top Layer [Top Solder] Mask Sliver [0.083mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.099997mm (3.9369mil) < 0.1mm (3.937mil)) Between Pad U5-2(72.441mm,75.3mm) on Top Layer And Pad U5-61(75.991mm,72.9mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.099997mm (3.9369mil) < 0.1mm (3.937mil)) Between Pad U5-3(72.441mm,74.9mm) on Top Layer And Pad U5-61(75.991mm,72.9mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.083mm < 0.1mm) Between Pad U5-30(78.791mm,69.35mm) on Top Layer And Pad U5-31(79.541mm,70.1mm) on Top Layer [Top Solder] Mask Sliver [0.083mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.099997mm (3.9369mil) < 0.1mm (3.937mil)) Between Pad U5-32(79.541mm,70.5mm) on Top Layer And Pad U5-61(75.991mm,72.9mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.099997mm (3.9369mil) < 0.1mm (3.937mil)) Between Pad U5-33(79.541mm,70.9mm) on Top Layer And Pad U5-61(75.991mm,72.9mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.099997mm (3.9369mil) < 0.1mm (3.937mil)) Between Pad U5-34(79.541mm,71.3mm) on Top Layer And Pad U5-61(75.991mm,72.9mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.099997mm (3.9369mil) < 0.1mm (3.937mil)) Between Pad U5-35(79.541mm,71.7mm) on Top Layer And Pad U5-61(75.991mm,72.9mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.099997mm (3.9369mil) < 0.1mm (3.937mil)) Between Pad U5-36(79.541mm,72.1mm) on Top Layer And Pad U5-61(75.991mm,72.9mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.099997mm (3.9369mil) < 0.1mm (3.937mil)) Between Pad U5-37(79.541mm,72.5mm) on Top Layer And Pad U5-61(75.991mm,72.9mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.099997mm (3.9369mil) < 0.1mm (3.937mil)) Between Pad U5-38(79.541mm,72.9mm) on Top Layer And Pad U5-61(75.991mm,72.9mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.099997mm (3.9369mil) < 0.1mm (3.937mil)) Between Pad U5-39(79.541mm,73.3mm) on Top Layer And Pad U5-61(75.991mm,72.9mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.099997mm (3.9369mil) < 0.1mm (3.937mil)) Between Pad U5-4(72.441mm,74.5mm) on Top Layer And Pad U5-61(75.991mm,72.9mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.099997mm (3.9369mil) < 0.1mm (3.937mil)) Between Pad U5-40(79.541mm,73.7mm) on Top Layer And Pad U5-61(75.991mm,72.9mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.099997mm (3.9369mil) < 0.1mm (3.937mil)) Between Pad U5-41(79.541mm,74.1mm) on Top Layer And Pad U5-61(75.991mm,72.9mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.099997mm (3.9369mil) < 0.1mm (3.937mil)) Between Pad U5-42(79.541mm,74.5mm) on Top Layer And Pad U5-61(75.991mm,72.9mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.099997mm (3.9369mil) < 0.1mm (3.937mil)) Between Pad U5-43(79.541mm,74.9mm) on Top Layer And Pad U5-61(75.991mm,72.9mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.099997mm (3.9369mil) < 0.1mm (3.937mil)) Between Pad U5-44(79.541mm,75.3mm) on Top Layer And Pad U5-61(75.991mm,72.9mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.083mm < 0.1mm) Between Pad U5-45(79.541mm,75.7mm) on Top Layer And Pad U5-46(78.791mm,76.45mm) on Top Layer [Top Solder] Mask Sliver [0.083mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.099997mm (3.9369mil) < 0.1mm (3.937mil)) Between Pad U5-5(72.441mm,74.1mm) on Top Layer And Pad U5-61(75.991mm,72.9mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.099997mm (3.9369mil) < 0.1mm (3.937mil)) Between Pad U5-6(72.441mm,73.7mm) on Top Layer And Pad U5-61(75.991mm,72.9mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.099997mm (3.9369mil) < 0.1mm (3.937mil)) Between Pad U5-61(75.991mm,72.9mm) on Top Layer And Pad U5-7(72.441mm,73.3mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.099997mm (3.9369mil) < 0.1mm (3.937mil)) Between Pad U5-61(75.991mm,72.9mm) on Top Layer And Pad U5-8(72.441mm,72.9mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.099997mm (3.9369mil) < 0.1mm (3.937mil)) Between Pad U5-61(75.991mm,72.9mm) on Top Layer And Pad U5-9(72.441mm,72.5mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]Waived by Artem Golubev at 22.04.2025 15:54:12
+Waived Violations :38
+
+Waived Violations Of Rule : Board Clearance Constraint (Gap=0mm) (All)
+   Waived Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Arc (105mm,43.5mm) on Top Overlay And Board Edge Waived by Artem Golubev at 22.04.2025 15:54:21
+   Waived Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Arc (105mm,78.5mm) on Top Overlay And Board Edge Waived by Artem Golubev at 22.04.2025 15:54:21
+   Waived Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Arc (55mm,43.5mm) on Top Overlay And Board Edge Waived by Artem Golubev at 22.04.2025 15:54:21
+   Waived Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Arc (55mm,78.5mm) on Top Overlay And Board Edge Waived by Artem Golubev at 22.04.2025 15:54:21
+   Waived Violation between Board Outline Clearance(Outline Edge): (0.24mm < 0.25mm) Between Board Edge And Pad J6-S(120.46mm,56.66mm) on Multi-Layer Waived by Artem Golubev at 22.04.2025 15:54:21
+   Waived Violation between Board Outline Clearance(Outline Edge): (0.24mm < 0.25mm) Between Board Edge And Pad J6-S(120.46mm,65.3mm) on Multi-Layer Waived by Artem Golubev at 22.04.2025 15:54:21
+   Waived Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (100.675mm,39.93mm)(100.675mm,40.83mm) on Top Overlay Waived by Artem Golubev at 22.04.2025 15:54:21
+   Waived Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (100mm,29.93mm)(100mm,39.93mm) on Top Overlay Waived by Artem Golubev at 22.04.2025 15:54:21
+   Waived Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (122.03mm,56.53mm)(122.42mm,56.53mm) on Top Overlay Waived by Artem Golubev at 22.04.2025 15:54:21
+   Waived Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (122.03mm,65.47mm)(122.42mm,65.47mm) on Top Overlay Waived by Artem Golubev at 22.04.2025 15:54:21
+   Waived Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (122.42mm,56.53mm)(122.42mm,65.47mm) on Top Overlay Waived by Artem Golubev at 22.04.2025 15:54:21
+   Waived Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (94.325mm,39.93mm)(100.675mm,39.93mm) on Top Overlay Waived by Artem Golubev at 22.04.2025 15:54:21
+   Waived Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (94.325mm,39.93mm)(94.325mm,40.83mm) on Top Overlay Waived by Artem Golubev at 22.04.2025 15:54:21
+   Waived Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (94.96mm,29.93mm)(95.5mm,29.43mm) on Top Overlay Waived by Artem Golubev at 22.04.2025 15:54:21
+   Waived Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (94.96mm,29.93mm)(95mm,39.93mm) on Top Overlay Waived by Artem Golubev at 22.04.2025 15:54:21
+   Waived Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (95.5mm,28.53mm)(95.5mm,29.43mm) on Top Overlay Waived by Artem Golubev at 22.04.2025 15:54:21
+   Waived Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (95.5mm,28.53mm)(99.5mm,28.53mm) on Top Overlay Waived by Artem Golubev at 22.04.2025 15:54:21
+   Waived Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (95.5mm,29.43mm)(99.5mm,29.43mm) on Top Overlay Waived by Artem Golubev at 22.04.2025 15:54:21
+   Waived Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (99.5mm,28.53mm)(99.5mm,29.43mm) on Top Overlay Waived by Artem Golubev at 22.04.2025 15:54:21
+   Waived Violation between Board Outline Clearance(Outline Edge): (Collision < 0.25mm) Between Board Edge And Track (99.5mm,29.43mm)(100mm,29.93mm) on Top Overlay Waived by Artem Golubev at 22.04.2025 15:54:21
+Waived Violations :20
+
+Waived Violations Of Rule : Matched Lengths(Tolerance=25.4mm) (All)
+   Waived Violation between Matched Net Lengths: Differential Pair MDI0 Actual Length Difference against diff pair SSRX is: 34.398mm, Length Tolerance : 25.4mm.Waived by Artem Golubev at 22.04.2025 16:00:09
+   Waived Violation between Matched Net Lengths: Differential Pair MDI1 Actual Length Difference against diff pair SSRX is: 34.204mm, Length Tolerance : 25.4mm.Waived by Artem Golubev at 22.04.2025 16:00:09
+   Waived Violation between Matched Net Lengths: Differential Pair MDI2 Actual Length Difference against diff pair SSRX is: 34.33mm, Length Tolerance : 25.4mm.Waived by Artem Golubev at 22.04.2025 16:00:09
+   Waived Violation between Matched Net Lengths: Differential Pair MDI3 Actual Length Difference against diff pair SSRX is: 34mm, Length Tolerance : 25.4mm.Waived by Artem Golubev at 22.04.2025 16:00:09
+   Waived Violation between Matched Net Lengths: Differential Pair USB3.0_SSTX Actual Length Difference against diff pair SSRX is: 31.158mm, Length Tolerance : 25.4mm.Waived by Artem Golubev at 22.04.2025 16:00:09
+Waived Violations :5
+
+
+Violations Detected : 118
+Waived Violations : 63
+Time Elapsed        : 00:00:07
