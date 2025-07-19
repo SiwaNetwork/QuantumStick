@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuantumStick Monitor - Веб-мониторинг</title>
+    
+    <!-- CSS библиотеки -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    
+    <!-- Основные стили -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --success-color: #059669;
+            --warning-color: #d97706;
+            --error-color: #dc2626;
+            --dark-bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --border-color: #374151;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #1a202c 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 1.5rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: #fbbf24;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .status-dot.online {
+            background-color: var(--success-color);
+        }
+
+        .status-dot.offline {
+            background-color: var(--error-color);
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .card-icon.device { background: linear-gradient(135deg, #6366f1, #8b5cf6); }
+        .card-icon.network { background: linear-gradient(135deg, #10b981, #059669); }
+        .card-icon.ptp { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .card-icon.system { background: linear-gradient(135deg, #ef4444, #dc2626); }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .metric:last-child {
+            border-bottom: none;
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .metric-value {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .value-success { color: var(--success-color); }
+        .value-warning { color: var(--warning-color); }
+        .value-error { color: var(--error-color); }
+
+        .chart-container {
+            grid-column: 1 / -1;
+            height: 400px;
+            background: var(--card-bg);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .chart-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .chart-tabs {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .chart-tab {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .chart-tab.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .alerts {
+            grid-column: 1 / -1;
+            background: var(--card-bg);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .alert {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 0.5rem;
+            border-left: 4px solid;
+            animation: slideInRight 0.5s ease;
+        }
+
+        .alert.error {
+            background: rgba(220, 38, 38, 0.1);
+            border-left-color: var(--error-color);
+        }
+
+        .alert.warning {
+            background: rgba(217, 119, 6, 0.1);
+            border-left-color: var(--warning-color);
+        }
+
+        .alert.success {
+            background: rgba(5, 150, 105, 0.1);
+            border-left-color: var(--success-color);
+        }
+
+        .alert-icon {
+            font-size: 1.25rem;
+        }
+
+        .alert.error .alert-icon { color: var(--error-color); }
+        .alert.warning .alert-icon { color: var(--warning-color); }
+        .alert.success .alert-icon { color: var(--success-color); }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background: var(--success-color);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #047857;
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background: var(--error-color);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #b91c1c;
+            transform: translateY(-2px);
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top: 2px solid currentColor;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-color);
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .chart-container {
+                height: 300px;
+            }
+
+            .controls {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-microchip"></i>
+                <span>QuantumStick Monitor</span>
+            </div>
+            <div class="status-indicator">
+                <div class="status-dot offline" id="connectionStatus"></div>
+                <span id="connectionText">Отключено</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="controls">
+            <button class="btn btn-success" id="startBtn">
+                <i class="fas fa-play"></i>
+                Запустить мониторинг
+            </button>
+            <button class="btn btn-danger" id="stopBtn" style="display: none;">
+                <i class="fas fa-stop"></i>
+                Остановить мониторинг
+            </button>
+            <button class="btn btn-primary" id="refreshBtn">
+                <i class="fas fa-sync-alt"></i>
+                Обновить
+            </button>
+        </div>
+
+        <div class="grid">
+            <!-- Информация об устройстве -->
+            <div class="card animate__animated animate__fadeInUp">
+                <div class="card-header">
+                    <div class="card-icon device">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3 class="card-title">Информация об устройстве</h3>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Интерфейс:</span>
+                    <span class="metric-value" id="interface">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Драйвер:</span>
+                    <span class="metric-value" id="driver">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Версия:</span>
+                    <span class="metric-value" id="version">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Скорость соединения:</span>
+                    <span class="metric-value" id="linkSpeed">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Статус:</span>
+                    <span class="metric-value" id="connectionStatusText">-</span>
+                </div>
+            </div>
+
+            <!-- Сетевая статистика -->
+            <div class="card animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
+                <div class="card-header">
+                    <div class="card-icon network">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3 class="card-title">Сетевая статистика</h3>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">RX Пакеты:</span>
+                    <span class="metric-value" id="rxPackets">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">TX Пакеты:</span>
+                    <span class="metric-value" id="txPackets">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">RX Байты:</span>
+                    <span class="metric-value" id="rxBytes">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">TX Байты:</span>
+                    <span class="metric-value" id="txBytes">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Ошибки:</span>
+                    <span class="metric-value" id="errors">-</span>
+                </div>
+            </div>
+
+            <!-- PTP Статистика -->
+            <div class="card animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                <div class="card-header">
+                    <div class="card-icon ptp">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="card-title">PTP Синхронизация</h3>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Состояние:</span>
+                    <span class="metric-value" id="ptpEnabled">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Смещение:</span>
+                    <span class="metric-value" id="ptpOffset">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Счетчик синхронизации:</span>
+                    <span class="metric-value" id="syncCount">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Последняя синхронизация:</span>
+                    <span class="metric-value" id="lastSync">-</span>
+                </div>
+            </div>
+
+            <!-- Системная информация -->
+            <div class="card animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
+                <div class="card-header">
+                    <div class="card-icon system">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3 class="card-title">Система</h3>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Загрузка CPU:</span>
+                    <span class="metric-value" id="cpuUsage">-</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="cpuProgress" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Использование памяти:</span>
+                    <span class="metric-value" id="memoryUsage">-</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="memoryProgress" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Время работы:</span>
+                    <span class="metric-value" id="uptime">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Температура:</span>
+                    <span class="metric-value" id="temperature">-</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Графики -->
+        <div class="chart-container animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+            <div class="chart-header">
+                <h3 class="chart-title">Мониторинг в реальном времени</h3>
+                <div class="chart-tabs">
+                    <button class="chart-tab active" data-chart="ptp">PTP Смещение</button>
+                    <button class="chart-tab" data-chart="network">Сетевой трафик</button>
+                </div>
+            </div>
+            <canvas id="chart" width="400" height="200"></canvas>
+        </div>
+
+        <!-- Алерты -->
+        <div class="alerts animate__animated animate__fadeInUp" style="animation-delay: 0.5s;">
+            <h3 class="card-title" style="margin-bottom: 1rem;">
+                <i class="fas fa-exclamation-triangle" style="color: var(--warning-color);"></i>
+                Уведомления
+            </h3>
+            <div id="alertsList">
+                <div class="alert success">
+                    <i class="fas fa-check-circle alert-icon"></i>
+                    <div>
+                        <div>Система мониторинга готова к работе</div>
+                        <small style="color: var(--text-secondary);">Запустите мониторинг для получения данных</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 QuantumStick Monitor. Современный веб-интерфейс для мониторинга устройств TimeStick.</p>
+    </footer>
+
+    <!-- JavaScript библиотеки -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
+
+    <script>
+        // Глобальные переменные
+        let socket;
+        let chart;
+        let currentChart = 'ptp';
+        let chartData = {
+            ptp: { labels: [], data: [] },
+            network: { labels: [], data: [] }
+        };
+
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeSocket();
+            initializeChart();
+            initializeEventListeners();
+        });
+
+        // Инициализация WebSocket соединения
+        function initializeSocket() {
+            socket = io();
+
+            socket.on('connect', function() {
+                updateConnectionStatus(true);
+                console.log('Подключено к серверу');
+            });
+
+            socket.on('disconnect', function() {
+                updateConnectionStatus(false);
+                console.log('Отключено от сервера');
+            });
+
+            socket.on('device_update', function(data) {
+                updateDeviceData(data);
+            });
+        }
+
+        // Инициализация графика
+        function initializeChart() {
+            const ctx = document.getElementById('chart').getContext('2d');
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'PTP Смещение (нс)',
+                        data: [],
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: { color: '#f8fafc' }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            ticks: { color: '#cbd5e1' },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        },
+                        y: {
+                            ticks: { color: '#cbd5e1' },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        }
+                    },
+                    animation: {
+                        duration: 300
+                    }
+                }
+            });
+        }
+
+        // Инициализация обработчиков событий
+        function initializeEventListeners() {
+            document.getElementById('startBtn').addEventListener('click', startMonitoring);
+            document.getElementById('stopBtn').addEventListener('click', stopMonitoring);
+            document.getElementById('refreshBtn').addEventListener('click', refreshData);
+
+            // Переключение графиков
+            document.querySelectorAll('.chart-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    switchChart(this.dataset.chart);
+                });
+            });
+        }
+
+        // Обновление статуса соединения
+        function updateConnectionStatus(connected) {
+            const statusDot = document.getElementById('connectionStatus');
+            const statusText = document.getElementById('connectionText');
+
+            if (connected) {
+                statusDot.className = 'status-dot online';
+                statusText.textContent = 'Подключено';
+            } else {
+                statusDot.className = 'status-dot offline';
+                statusText.textContent = 'Отключено';
+            }
+        }
+
+        // Обновление данных устройства
+        function updateDeviceData(data) {
+            // Информация об устройстве
+            document.getElementById('interface').textContent = data.device_info.interface;
+            document.getElementById('driver').textContent = data.device_info.driver;
+            document.getElementById('version').textContent = data.device_info.version;
+            document.getElementById('linkSpeed').textContent = data.device_info.link_speed + ' Mbps';
+            
+            const statusElement = document.getElementById('connectionStatusText');
+            statusElement.textContent = data.device_info.connection_status;
+            statusElement.className = 'metric-value ' + (data.device_info.is_online ? 'value-success' : 'value-error');
+
+            // Сетевая статистика
+            document.getElementById('rxPackets').textContent = formatNumber(data.network_stats.rx_packets);
+            document.getElementById('txPackets').textContent = formatNumber(data.network_stats.tx_packets);
+            document.getElementById('rxBytes').textContent = formatBytes(data.network_stats.rx_bytes);
+            document.getElementById('txBytes').textContent = formatBytes(data.network_stats.tx_bytes);
+            
+            const totalErrors = data.network_stats.rx_errors + data.network_stats.tx_errors;
+            const errorsElement = document.getElementById('errors');
+            errorsElement.textContent = totalErrors;
+            errorsElement.className = 'metric-value ' + (totalErrors > 0 ? 'value-warning' : 'value-success');
+
+            // PTP статистика
+            const ptpEnabledElement = document.getElementById('ptpEnabled');
+            ptpEnabledElement.textContent = data.ptp_status.enabled ? 'Включен' : 'Отключен';
+            ptpEnabledElement.className = 'metric-value ' + (data.ptp_status.enabled ? 'value-success' : 'value-error');
+            
+            const ptpOffsetElement = document.getElementById('ptpOffset');
+            const offset = data.ptp_status.current_offset_ns;
+            ptpOffsetElement.textContent = offset + ' нс';
+            ptpOffsetElement.className = 'metric-value ' + (Math.abs(offset) < 1000 ? 'value-success' : 'value-warning');
+            
+            document.getElementById('syncCount').textContent = data.ptp_status.sync_count;
+            document.getElementById('lastSync').textContent = data.ptp_status.last_sync ? 
+                new Date(data.ptp_status.last_sync).toLocaleTimeString() : '-';
+
+            // Системная информация
+            const cpuUsage = Math.round(data.system_info.cpu_usage);
+            document.getElementById('cpuUsage').textContent = cpuUsage + '%';
+            document.getElementById('cpuProgress').style.width = cpuUsage + '%';
+            
+            const memoryUsage = Math.round(data.system_info.memory_usage);
+            document.getElementById('memoryUsage').textContent = memoryUsage + '%';
+            document.getElementById('memoryProgress').style.width = memoryUsage + '%';
+            
+            document.getElementById('uptime').textContent = formatUptime(data.system_info.uptime);
+            document.getElementById('temperature').textContent = data.system_info.temperature.toFixed(1) + '°C';
+
+            // Обновление графиков
+            updateChartData(data);
+
+            // Обновление алертов
+            updateAlerts(data.alerts);
+        }
+
+        // Обновление данных графика
+        function updateChartData(data) {
+            if (data.history && data.history.timestamps.length > 0) {
+                const timestamps = data.history.timestamps.map(ts => 
+                    new Date(ts).toLocaleTimeString()
+                );
+
+                chartData.ptp.labels = timestamps;
+                chartData.ptp.data = data.history.ptp_offset;
+                chartData.network.labels = timestamps;
+                chartData.network.data = data.history.network_throughput;
+
+                if (currentChart === 'ptp') {
+                    updateChart('PTP Смещение (нс)', chartData.ptp, '#3b82f6');
+                } else {
+                    updateChart('Сетевой трафик (Mbps)', chartData.network, '#10b981');
+                }
+            }
+        }
+
+        // Обновление графика
+        function updateChart(label, data, color) {
+            chart.data.labels = data.labels;
+            chart.data.datasets[0].label = label;
+            chart.data.datasets[0].data = data.data;
+            chart.data.datasets[0].borderColor = color;
+            chart.data.datasets[0].backgroundColor = color + '20';
+            chart.update('none');
+        }
+
+        // Переключение графика
+        function switchChart(chartType) {
+            currentChart = chartType;
+            
+            document.querySelectorAll('.chart-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelector(`[data-chart="${chartType}"]`).classList.add('active');
+
+            if (chartType === 'ptp') {
+                updateChart('PTP Смещение (нс)', chartData.ptp, '#3b82f6');
+            } else {
+                updateChart('Сетевой трафик (Mbps)', chartData.network, '#10b981');
+            }
+        }
+
+        // Обновление алертов
+        function updateAlerts(alerts) {
+            const alertsList = document.getElementById('alertsList');
+            
+            if (alerts.length === 0) {
+                alertsList.innerHTML = `
+                    <div class="alert success">
+                        <i class="fas fa-check-circle alert-icon"></i>
+                        <div>
+                            <div>Система работает нормально</div>
+                            <small style="color: var(--text-secondary);">Критических ошибок не обнаружено</small>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            alertsList.innerHTML = alerts.map(alert => `
+                <div class="alert ${alert.level}">
+                    <i class="fas ${getAlertIcon(alert.level)} alert-icon"></i>
+                    <div>
+                        <div>${alert.message}</div>
+                        <small style="color: var(--text-secondary);">
+                            ${new Date(alert.timestamp).toLocaleString()}
+                        </small>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Получение иконки для алерта
+        function getAlertIcon(level) {
+            switch (level) {
+                case 'error': return 'fa-exclamation-circle';
+                case 'warning': return 'fa-exclamation-triangle';
+                case 'success': return 'fa-check-circle';
+                default: return 'fa-info-circle';
+            }
+        }
+
+        // Запуск мониторинга
+        function startMonitoring() {
+            const startBtn = document.getElementById('startBtn');
+            const stopBtn = document.getElementById('stopBtn');
+            
+            startBtn.innerHTML = '<div class="loading"></div> Запуск...';
+            startBtn.disabled = true;
+
+            fetch('/api/start_monitoring', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        startBtn.style.display = 'none';
+                        stopBtn.style.display = 'flex';
+                        showNotification('Мониторинг запущен', 'success');
+                    } else {
+                        showNotification('Ошибка запуска: ' + data.message, 'error');
+                        startBtn.innerHTML = '<i class="fas fa-play"></i> Запустить мониторинг';
+                        startBtn.disabled = false;
+                    }
+                })
+                .catch(error => {
+                    console.error('Ошибка:', error);
+                    showNotification('Ошибка подключения к серверу', 'error');
+                    startBtn.innerHTML = '<i class="fas fa-play"></i> Запустить мониторинг';
+                    startBtn.disabled = false;
+                });
+        }
+
+        // Остановка мониторинга
+        function stopMonitoring() {
+            fetch('/api/stop_monitoring', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('startBtn').style.display = 'flex';
+                    document.getElementById('startBtn').innerHTML = '<i class="fas fa-play"></i> Запустить мониторинг';
+                    document.getElementById('startBtn').disabled = false;
+                    document.getElementById('stopBtn').style.display = 'none';
+                    showNotification('Мониторинг остановлен', 'success');
+                });
+        }
+
+        // Обновление данных
+        function refreshData() {
+            const refreshBtn = document.getElementById('refreshBtn');
+            const originalContent = refreshBtn.innerHTML;
+            
+            refreshBtn.innerHTML = '<div class="loading"></div> Обновление...';
+            refreshBtn.disabled = true;
+
+            socket.emit('request_data');
+
+            setTimeout(() => {
+                refreshBtn.innerHTML = originalContent;
+                refreshBtn.disabled = false;
+            }, 1000);
+        }
+
+        // Показ уведомления
+        function showNotification(message, type) {
+            // Можно добавить toast уведомления
+            console.log(`[${type.toUpperCase()}] ${message}`);
+        }
+
+        // Форматирование чисел
+        function formatNumber(num) {
+            return new Intl.NumberFormat('ru-RU').format(num);
+        }
+
+        // Форматирование байтов
+        function formatBytes(bytes) {
+            const sizes = ['Б', 'КБ', 'МБ', 'ГБ', 'ТБ'];
+            if (bytes === 0) return '0 Б';
+            const i = Math.floor(Math.log(bytes) / Math.log(1024));
+            return Math.round(bytes / Math.pow(1024, i) * 100) / 100 + ' ' + sizes[i];
+        }
+
+        // Форматирование времени работы
+        function formatUptime(seconds) {
+            const days = Math.floor(seconds / 86400);
+            const hours = Math.floor((seconds % 86400) / 3600);
+            const minutes = Math.floor((seconds % 3600) / 60);
+            
+            if (days > 0) {
+                return `${days}д ${hours}ч ${minutes}м`;
+            } else if (hours > 0) {
+                return `${hours}ч ${minutes}м`;
+            } else {
+                return `${minutes}м`;
+            }
+        }
+    </script>
+</body>
+</html>
