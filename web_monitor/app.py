@@ -2,6 +2,7 @@
 """
 QuantumStick Web Monitor
 Современный веб-интерфейс для мониторинга устройства QuantumStick
+Поддержка Linux и Windows платформ
 """
 
 import os
@@ -10,14 +11,29 @@ import json
 import time
 import subprocess
 import threading
+import platform
 from datetime import datetime, timedelta
 from flask import Flask, render_template, request, jsonify
 from flask_socketio import SocketIO, emit
 import ctypes
-import fcntl
-import struct
 import socket
 import logging
+
+# Условный импорт для Linux
+if platform.system() == 'Linux':
+    import fcntl
+    import struct
+
+# Импорт поддержки Windows
+if platform.system() == 'Windows':
+    try:
+        from windows_support import get_windows_monitor, detect_timestick_devices, get_windows_network_interfaces
+        WINDOWS_SUPPORT = True
+    except ImportError:
+        WINDOWS_SUPPORT = False
+        logging.warning("Windows support module not available")
+else:
+    WINDOWS_SUPPORT = False
 
 # Настройка логирования
 logging.basicConfig(level=logging.INFO)
@@ -26,6 +42,24 @@ logger = logging.getLogger(__name__)
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'quantum_stick_monitoring_secret'
 socketio = SocketIO(app, cors_allowed_origins="*")
+
+# Функция создания монитора в зависимости от платформы
+def create_monitor():
+    """Создание монитора в зависимости от платформы"""
+    current_platform = platform.system()
+    
+    if current_platform == 'Windows' and WINDOWS_SUPPORT:
+        logger.info("Используется Windows монитор")
+        return get_windows_monitor()
+    elif current_platform == 'Linux':
+        logger.info("Используется Linux монитор")
+        return LinuxTimeStickMonitor()
+    else:
+        logger.warning(f"Неподдерживаемая платформа: {current_platform}")
+        return LinuxTimeStickMonitor()  # Fallback
+
+# Глобальный экземпляр монитора
+monitor = create_monitor()
 
 # Глобальные переменные для хранения данных
 device_data = {
@@ -85,14 +119,30 @@ SIOCDEVPRIVATE = 0x89F0
 AX_SIGNATURE = 0
 AX_USB_COMMAND = 1
 
-class TimeStickMonitor:
-    """Класс для мониторинга устройства TimeStick"""
+class BaseTimeStickMonitor:
+    """Базовый класс для мониторинга устройства TimeStick"""
     
     def __init__(self):
         self.interface_name = None
-        self.sock_fd = -1
         self.running = False
         self.monitor_thread = None
+        self.platform = platform.system()
+    
+    def get_platform_info(self):
+        """Получение информации о платформе"""
+        return {
+            'system': self.platform,
+            'version': platform.version(),
+            'architecture': platform.architecture()[0],
+            'machine': platform.machine()
+        }
+
+class LinuxTimeStickMonitor(BaseTimeStickMonitor):
+    """Класс для мониторинга устройства TimeStick в Linux"""
+    
+    def __init__(self):
+        super().__init__()
+        self.sock_fd = -1
         
     def find_timestick_interface(self):
         """Поиск интерфейса TimeStick"""
@@ -359,9 +409,6 @@ class TimeStickMonitor:
         if self.monitor_thread:
             self.monitor_thread.join(timeout=5)
 
-# Создаем экземпляр монитора
-monitor = TimeStickMonitor()
-
 @app.route('/')
 def index():
     """Главная страница"""
@@ -401,6 +448,112 @@ def handle_disconnect():
 def handle_request_data():
     """Обработка запроса данных от клиента"""
     emit('device_update', device_data)
+
+# API endpoints для платформо-специфичных функций
+
+@app.route('/api/platform')
+def get_platform_info():
+    """Получение информации о платформе"""
+    return jsonify({
+        'platform': platform.system(),
+        'version': platform.version(),
+        'architecture': platform.architecture()[0],
+        'machine': platform.machine(),
+        'python_version': platform.python_version(),
+        'windows_support': WINDOWS_SUPPORT if platform.system() == 'Windows' else False
+    })
+
+@app.route('/api/devices/detect')
+def detect_devices():
+    """Обнаружение TimeStick устройств"""
+    if platform.system() == 'Windows' and WINDOWS_SUPPORT:
+        devices = detect_timestick_devices()
+        return jsonify({'devices': devices, 'platform': 'Windows'})
+    else:
+        # Linux detection logic here
+        return jsonify({'devices': [], 'platform': 'Linux'})
+
+@app.route('/api/network/interfaces')
+def get_network_interfaces():
+    """Получение сетевых интерфейсов"""
+    if platform.system() == 'Windows' and WINDOWS_SUPPORT:
+        interfaces = get_windows_network_interfaces()
+        return jsonify({'interfaces': interfaces, 'platform': 'Windows'})
+    else:
+        # Linux interfaces logic here
+        try:
+            result = subprocess.run(['ip', 'link', 'show'], capture_output=True, text=True)
+            interfaces = []
+            if result.returncode == 0:
+                for line in result.stdout.split('\n'):
+                    if ':' in line and 'state' in line:
+                        interface_name = line.split(':')[1].strip()
+                        interfaces.append({
+                            'name': interface_name,
+                            'description': f'Linux Network Interface {interface_name}',
+                            'status': 'UP' if 'state UP' in line else 'DOWN'
+                        })
+            return jsonify({'interfaces': interfaces, 'platform': 'Linux'})
+        except Exception as e:
+            return jsonify({'error': str(e), 'platform': 'Linux'})
+
+@app.route('/api/driver/install', methods=['POST'])
+def install_driver():
+    """Установка драйвера (только Windows)"""
+    if platform.system() != 'Windows' or not WINDOWS_SUPPORT:
+        return jsonify({'error': 'Driver installation only supported on Windows'}), 400
+    
+    try:
+        data = request.get_json()
+        package_path = data.get('package_path')
+        
+        if not package_path:
+            return jsonify({'error': 'Package path required'}), 400
+        
+        from windows_support import install_driver_package
+        success = install_driver_package(package_path)
+        
+        return jsonify({
+            'success': success,
+            'message': 'Driver installed successfully' if success else 'Driver installation failed'
+        })
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/ptp/control', methods=['POST'])
+def control_ptp():
+    """Управление PTP"""
+    try:
+        data = request.get_json()
+        enabled = data.get('enabled', False)
+        
+        if hasattr(monitor, 'set_ptp_enabled'):
+            success = monitor.set_ptp_enabled(enabled)
+            return jsonify({
+                'success': success,
+                'enabled': enabled,
+                'message': f'PTP {"enabled" if enabled else "disabled"}'
+            })
+        else:
+            return jsonify({'error': 'PTP control not available'}), 400
+            
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/status/complete')
+def get_complete_status():
+    """Получение полного статуса устройства"""
+    try:
+        if hasattr(monitor, 'get_complete_status'):
+            status = monitor.get_complete_status()
+            if status:
+                return jsonify(status)
+        
+        # Fallback to current device_data
+        return jsonify(device_data)
+        
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
     # Автоматический запуск мониторинга при старте
