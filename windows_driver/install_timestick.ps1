@@ -168,7 +168,6 @@ function Uninstall-TimeStickDriver {
         return $false
     }
 }
-}
 
 # Проверка статуса установки
 function Test-DriverInstallation {
@@ -289,7 +288,6 @@ function Main {
         Write-Log "Критическая ошибка: $($_.Exception.Message)" "ERROR"
         exit 1
     }
-}
 }
 
 # Запуск основной функции
