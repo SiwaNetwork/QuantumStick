@@ -480,20 +480,7 @@
                     <span class="metric-label">Архитектура:</span>
                     <span class="metric-value" id="architecture">-</span>
                 </div>
-                <div class="metric">
-                    <span class="metric-label">Windows поддержка:</span>
-                    <span class="metric-value" id="windowsSupport">-</span>
-                </div>
-                <div class="controls" id="windowsControls" style="display: none;">
-                    <button class="btn btn-primary" onclick="detectDevices()">
-                        <i class="fas fa-search"></i>
-                        Поиск устройств
-                    </button>
-                    <button class="btn btn-secondary" onclick="showDriverInstall()">
-                        <i class="fas fa-download"></i>
-                        Установить драйвер
-                    </button>
-                </div>
+
             </div>
 
             <!-- Сетевая статистика -->
@@ -963,7 +950,7 @@
             }
         }
 
-        // Функции для Windows поддержки
+        // Функции для загрузки информации о платформе
         async function loadPlatformInfo() {
             try {
                 const response = await fetch('/api/platform');
@@ -971,64 +958,12 @@
                 
                 document.getElementById('platform').textContent = data.platform + ' ' + data.version;
                 document.getElementById('architecture').textContent = data.architecture;
-                document.getElementById('windowsSupport').textContent = data.windows_support ? 'Да' : 'Нет';
-                
-                // Показываем Windows контролы если поддержка есть
-                if (data.windows_support) {
-                    document.getElementById('windowsControls').style.display = 'flex';
-                }
             } catch (error) {
                 console.error('Ошибка загрузки информации о платформе:', error);
             }
         }
 
-        async function detectDevices() {
-            try {
-                const response = await fetch('/api/devices/detect');
-                const data = await response.json();
-                
-                if (data.devices && data.devices.length > 0) {
-                    let message = `Найдено устройств: ${data.devices.length}\n`;
-                    data.devices.forEach(device => {
-                        message += `- ${device.name} (${device.status})\n`;
-                    });
-                    alert(message);
-                } else {
-                    alert('TimeStick устройства не найдены');
-                }
-            } catch (error) {
-                alert('Ошибка поиска устройств: ' + error.message);
-            }
-        }
 
-        function showDriverInstall() {
-            const path = prompt('Введите путь к INF файлу драйвера:', 'C:\\drivers\\timestick.inf');
-            if (path) {
-                installDriver(path);
-            }
-        }
-
-        async function installDriver(packagePath) {
-            try {
-                const response = await fetch('/api/driver/install', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ package_path: packagePath })
-                });
-                
-                const data = await response.json();
-                
-                if (data.success) {
-                    alert('Драйвер успешно установлен!');
-                } else {
-                    alert('Ошибка установки драйвера: ' + data.message);
-                }
-            } catch (error) {
-                alert('Ошибка установки драйвера: ' + error.message);
-            }
-        }
 
         async function controlPTP(enabled) {
             try {

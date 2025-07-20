@@ -2,7 +2,7 @@
 """
 QuantumStick Web Monitor
 Современный веб-интерфейс для мониторинга устройства QuantumStick
-Поддержка Linux и Windows платформ
+Поддержка только Linux платформ
 """
 
 import os
@@ -19,21 +19,9 @@ import ctypes
 import socket
 import logging
 
-# Условный импорт для Linux
-if platform.system() == 'Linux':
-    import fcntl
-    import struct
-
-# Импорт поддержки Windows
-if platform.system() == 'Windows':
-    try:
-        from windows_support import get_windows_monitor, detect_timestick_devices, get_windows_network_interfaces
-        WINDOWS_SUPPORT = True
-    except ImportError:
-        WINDOWS_SUPPORT = False
-        logging.warning("Windows support module not available")
-else:
-    WINDOWS_SUPPORT = False
+# Импорт для Linux
+import fcntl
+import struct
 
 # Настройка логирования
 logging.basicConfig(level=logging.INFO)
@@ -43,20 +31,17 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'quantum_stick_monitoring_secret'
 socketio = SocketIO(app, cors_allowed_origins="*")
 
-# Функция создания монитора в зависимости от платформы
+# Функция создания монитора для Linux
 def create_monitor():
-    """Создание монитора в зависимости от платформы"""
+    """Создание монитора для Linux"""
     current_platform = platform.system()
     
-    if current_platform == 'Windows' and WINDOWS_SUPPORT:
-        logger.info("Используется Windows монитор")
-        return get_windows_monitor()
-    elif current_platform == 'Linux':
+    if current_platform == 'Linux':
         logger.info("Используется Linux монитор")
         return LinuxTimeStickMonitor()
     else:
-        logger.warning(f"Неподдерживаемая платформа: {current_platform}")
-        return LinuxTimeStickMonitor()  # Fallback
+        logger.error(f"Неподдерживаемая платформа: {current_platform}. Поддерживается только Linux.")
+        sys.exit(1)
 
 # Глобальный экземпляр монитора
 monitor = create_monitor()
@@ -460,65 +445,39 @@ def get_platform_info():
         'architecture': platform.architecture()[0],
         'machine': platform.machine(),
         'python_version': platform.python_version(),
-        'windows_support': WINDOWS_SUPPORT if platform.system() == 'Windows' else False
+        'windows_support': False
     })
 
 @app.route('/api/devices/detect')
 def detect_devices():
-    """Обнаружение TimeStick устройств"""
-    if platform.system() == 'Windows' and WINDOWS_SUPPORT:
-        devices = detect_timestick_devices()
-        return jsonify({'devices': devices, 'platform': 'Windows'})
-    else:
-        # Linux detection logic here
-        return jsonify({'devices': [], 'platform': 'Linux'})
+    """Обнаружение TimeStick устройств (Linux)"""
+    # Linux detection logic here
+    return jsonify({'devices': [], 'platform': 'Linux'})
 
 @app.route('/api/network/interfaces')
 def get_network_interfaces():
     """Получение сетевых интерфейсов"""
-    if platform.system() == 'Windows' and WINDOWS_SUPPORT:
-        interfaces = get_windows_network_interfaces()
-        return jsonify({'interfaces': interfaces, 'platform': 'Windows'})
-    else:
-        # Linux interfaces logic here
-        try:
-            result = subprocess.run(['ip', 'link', 'show'], capture_output=True, text=True)
-            interfaces = []
-            if result.returncode == 0:
-                for line in result.stdout.split('\n'):
-                    if ':' in line and 'state' in line:
-                        interface_name = line.split(':')[1].strip()
-                        interfaces.append({
-                            'name': interface_name,
-                            'description': f'Linux Network Interface {interface_name}',
-                            'status': 'UP' if 'state UP' in line else 'DOWN'
-                        })
-            return jsonify({'interfaces': interfaces, 'platform': 'Linux'})
-        except Exception as e:
-            return jsonify({'error': str(e), 'platform': 'Linux'})
+    # Linux interfaces logic here
+    try:
+        result = subprocess.run(['ip', 'link', 'show'], capture_output=True, text=True)
+        interfaces = []
+        if result.returncode == 0:
+            for line in result.stdout.split('\n'):
+                if ':' in line and 'state' in line:
+                    interface_name = line.split(':')[1].strip()
+                    interfaces.append({
+                        'name': interface_name,
+                        'description': f'Linux Network Interface {interface_name}',
+                        'status': 'UP' if 'state UP' in line else 'DOWN'
+                    })
+        return jsonify({'interfaces': interfaces, 'platform': 'Linux'})
+    except Exception as e:
+        return jsonify({'error': str(e), 'platform': 'Linux'})
 
 @app.route('/api/driver/install', methods=['POST'])
 def install_driver():
-    """Установка драйвера (только Windows)"""
-    if platform.system() != 'Windows' or not WINDOWS_SUPPORT:
-        return jsonify({'error': 'Driver installation only supported on Windows'}), 400
-    
-    try:
-        data = request.get_json()
-        package_path = data.get('package_path')
-        
-        if not package_path:
-            return jsonify({'error': 'Package path required'}), 400
-        
-        from windows_support import install_driver_package
-        success = install_driver_package(package_path)
-        
-        return jsonify({
-            'success': success,
-            'message': 'Driver installed successfully' if success else 'Driver installation failed'
-        })
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+    """Установка драйвера (не поддерживается на Linux)"""
+    return jsonify({'error': 'Driver installation not supported on Linux'}), 400
 
 @app.route('/api/ptp/control', methods=['POST'])
 def control_ptp():
