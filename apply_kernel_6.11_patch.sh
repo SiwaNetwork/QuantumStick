@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # Скрипт для адаптации драйвера TimeStick к ядру Linux 6.11+
-# Автор: AI Assistant
-# Дата: $(date)
+
 
 set -e
 
