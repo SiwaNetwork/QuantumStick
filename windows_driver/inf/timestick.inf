@@ -1,0 +1,96 @@
+;
+; TimeStick USB Network Adapter Driver Installation File
+; Copyright (c) 2024 TimeStick Team
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=Net
+ClassGuid={4d36e972-e325-11ce-bfc1-08002be10318}
+Provider=%ManufacturerName%
+CatalogFile=timestick.cat
+DriverVer=01/01/2024,1.0.0.0
+PnpLockdown=1
+
+[DestinationDirs]
+DefaultDestDir = 12
+TimeStick_Device_CoInstaller_CopyFiles = 11
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+timestick.sys = 1,,
+WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll=1
+
+[Manufacturer]
+%ManufacturerName%=Standard,NT$ARCH$
+
+[Standard.NT$ARCH$]
+%TimeStick.DeviceDesc%=TimeStick_Device, USB\VID_0B95&PID_1790
+%TimeStick.DeviceDesc%=TimeStick_Device, USB\VID_0B95&PID_1791
+%TimeStick.DeviceDesc%=TimeStick_Device, USB\VID_0B95&PID_1792
+
+[TimeStick_Device.NT]
+CopyFiles=Drivers_Dir
+AddReg=TimeStick_AddReg
+
+[TimeStick_AddReg]
+HKR,,DevLoader,,*ndis
+HKR,,DeviceVxDs,,timestick.sys
+HKR,,EnumPropPages32,,"netdi.dll,EnumPropPages"
+
+; Параметры для работы с сетью
+HKR,Ndi,Service,,"TimeStickNet"
+HKR,Ndi\Interfaces,UpperRange,,"ndis5"
+HKR,Ndi\Interfaces,LowerRange,,"ethernet"
+
+; Параметры устройства
+HKR,,"NetworkAddress",0x00000000,""
+HKR,,"SpeedDuplex",0x00010001,0
+HKR,,"WakeOnLan",0x00010001,1
+HKR,,"FlowControl",0x00010001,3
+HKR,,"PTPEnabled",0x00010001,0
+
+[Drivers_Dir]
+timestick.sys
+
+[TimeStick_Device.NT.Services]
+AddService = TimeStickNet,%SPSVCINST_ASSOCSERVICE%, TimeStick_Service_Inst
+
+[TimeStick_Service_Inst]
+DisplayName    = %TimeStick.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\timestick.sys
+
+[TimeStick_Device.NT.CoInstallers]
+AddReg=TimeStick_Device_CoInstaller_AddReg
+CopyFiles=TimeStick_Device_CoInstaller_CopyFiles
+
+[TimeStick_Device_CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000, "WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll,WdfCoInstaller"
+
+[TimeStick_Device_CoInstaller_CopyFiles]
+WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll
+
+[TimeStick_Device.NT.Wdf]
+KmdfService =  TimeStickNet, TimeStick_wdfsect
+
+[TimeStick_wdfsect]
+KmdfLibraryVersion = $KMDFVERSION$
+
+; Локализация строк
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="TimeStick Technologies"
+ClassName="Network adapters"
+DiskName = "TimeStick Installation Disk"
+TimeStick.DeviceDesc = "TimeStick USB 3.2 to 2.5G Ethernet Adapter"
+TimeStick.SVCDESC = "TimeStick USB Network Service"
+
+; Нелокализованные строки
+REG_MULTI_SZ = 0x00010000
+REG_EXPAND_SZ = 0x00020000
+REG_DWORD = 0x00010001
