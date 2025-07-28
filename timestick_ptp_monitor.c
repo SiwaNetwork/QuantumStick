@@ -26,6 +26,8 @@
 #include <ifaddrs.h>
 #include <pthread.h>
 #include <math.h>
+#include <stdint.h>
+#include <stdarg.h>
 
 // Константы из драйвера
 #define AX_PRIVATE              SIOCDEVPRIVATE
@@ -200,12 +202,11 @@ int find_ptp_device() {
         
         if (ptp_fd >= 0) {
             if (ioctl(ptp_fd, PTP_CLOCK_GETCAPS, &caps) == 0) {
-                if (strstr(caps.name, "asix") != NULL) {
+                // В новых версиях ядра caps.name может отсутствовать
                     strncpy(monitor_data.ptp_device, ptp_device, sizeof(monitor_data.ptp_device) - 1);
                     monitor_data.ptp_fd = ptp_fd;
-                    log_message("Found PTP device: %s (%s)", ptp_device, caps.name);
+                log_message("Found PTP device: %s", ptp_device);
                     return 0;
-                }
             }
             close(ptp_fd);
         }

@@ -237,11 +237,10 @@ int check_ptp_status() {
         if (ptp_fd >= 0) {
             if (ioctl(ptp_fd, PTP_CLOCK_GETCAPS, &caps) == 0) {
                 // Проверяем, что это наше устройство
-                if (strstr(caps.name, "asix") != NULL) {
+                // В новых версиях ядра caps.name может отсутствовать
                     device_info.ptp_enabled = 1;
                     close(ptp_fd);
                     return 0;
-                }
             }
             close(ptp_fd);
         }

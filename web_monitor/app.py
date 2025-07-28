@@ -32,19 +32,8 @@ app.config['SECRET_KEY'] = 'quantum_stick_monitoring_secret'
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 # Функция создания монитора для Linux
-def create_monitor():
-    """Создание монитора для Linux"""
-    current_platform = platform.system()
-    
-    if current_platform == 'Linux':
-        logger.info("Используется Linux монитор")
-        return LinuxTimeStickMonitor()
-    else:
-        logger.error(f"Неподдерживаемая платформа: {current_platform}. Поддерживается только Linux.")
-        sys.exit(1)
-
 # Глобальный экземпляр монитора
-monitor = create_monitor()
+monitor = None
 
 # Глобальные переменные для хранения данных
 device_data = {
@@ -141,8 +130,10 @@ class LinuxTimeStickMonitor(BaseTimeStickMonitor):
             # Ищем интерфейсы ethernet
             interfaces = []
             for line in result.stdout.split('\n'):
-                if 'state UP' in line and 'eth' in line:
-                    interface = line.split(':')[1].strip()
+                if ':' in line and ('eth' in line or 'enx' in line):
+                    parts = line.split(':')
+                    if len(parts) >= 2:
+                        interface = parts[1].strip()
                     interfaces.append(interface)
             
             # Проверяем каждый интерфейс на наличие драйвера TimeStick
@@ -150,6 +141,11 @@ class LinuxTimeStickMonitor(BaseTimeStickMonitor):
                 if self.check_timestick_driver(interface):
                     self.interface_name = interface
                     return interface
+                    
+            # Если не нашли, попробуем найти наш конкретный интерфейс
+            if 'enxf8e43b0004d1' in interfaces:
+                self.interface_name = 'enxf8e43b0004d1'
+                return 'enxf8e43b0004d1'
                     
             return None
             
@@ -514,7 +510,21 @@ def get_complete_status():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+def create_monitor():
+    """Создание монитора для Linux"""
+    current_platform = platform.system()
+    
+    if current_platform == 'Linux':
+        logger.info("Используется Linux монитор")
+        return LinuxTimeStickMonitor()
+    else:
+        logger.error(f"Неподдерживаемая платформа: {current_platform}. Поддерживается только Linux.")
+        sys.exit(1)
+
 if __name__ == '__main__':
+    # Создание монитора
+    monitor = create_monitor()
+    
     # Автоматический запуск мониторинга при старте
     monitor.start_monitoring()
     

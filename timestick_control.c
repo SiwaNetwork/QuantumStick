@@ -17,6 +17,7 @@
 #include <linux/sockios.h>
 #include <ifaddrs.h>
 #include <getopt.h>
+#include <stdint.h>
 
 // Константы из драйвера
 #define AX_PRIVATE              SIOCDEVPRIVATE
